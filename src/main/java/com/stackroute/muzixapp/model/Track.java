@@ -13,9 +13,9 @@ import javax.persistence.Id;
 
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Document(collection = "Track")
 //make this class as hibernate entity
 public class Track {
@@ -24,7 +24,10 @@ public class Track {
 
 	private String name;
 
-	private String comment;
+	private String artist;
+
+	private String Comments;
+
 
 
 }

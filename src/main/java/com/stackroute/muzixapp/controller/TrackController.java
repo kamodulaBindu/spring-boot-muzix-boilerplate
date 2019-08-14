@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping(value = "api/v1")
 public class TrackController {
@@ -28,7 +29,6 @@ private ResponseEntity responseEntity;
 	public ResponseEntity<?> getAllTracks() {
 
 		try {
-
 			responseEntity = new ResponseEntity(trackDAO.getAllTracks(), HttpStatus.OK);
 
 		} catch (Exception e) {
@@ -37,7 +37,7 @@ private ResponseEntity responseEntity;
 		return responseEntity;
 	}
 
-	@PostMapping("save") //mapping for saving Tracks
+	@PostMapping("track") //mapping for saving Tracks
 	public ResponseEntity<?> saveTrack(@RequestBody Track track) throws TrackAlreadyExistsException {
 
 			responseEntity = new ResponseEntity(trackDAO.saveTrack(track), HttpStatus.OK);
@@ -45,28 +45,26 @@ private ResponseEntity responseEntity;
 		return responseEntity;
 	}
 
-   @PostMapping("add") //mapping for addTrack
-	public ResponseEntity<?> addTrack(@RequestBody Track track) throws TrackAlreadyExistsException {
-
-	   responseEntity = new ResponseEntity(trackDAO.saveTrack(track), HttpStatus.OK);
-
-	   return responseEntity;
-
-
-
-
-	}
+//   @PostMapping("track") //mapping for addTrack
+//	public ResponseEntity<?> addTrack(@RequestBody Track track) throws TrackAlreadyExistsException {
+//
+//	   responseEntity = new ResponseEntity(trackDAO.saveTrack(track), HttpStatus.OK);
+//
+//	   return responseEntity;
+//
+//
+//
+//
+//	}
 
   @DeleteMapping("/delete/{id}") //mapping for deleteTrack
 	public ResponseEntity<?> deleteTrack(@PathVariable(value = "id") int trackId) throws TrackNotFoundException {
-
-	  responseEntity = new ResponseEntity("Succesfully Deleted", HttpStatus.OK);
-
+	  responseEntity = new ResponseEntity<Track>(trackDAO.deleteTrack(trackId), HttpStatus.OK);
 	  return responseEntity;
 
 
   }
-	@PutMapping("update")
+	@PutMapping("/update/{id}")
 	public ResponseEntity<?> updateTrack(@RequestBody Track track) throws TrackNotFoundException
 	{
 

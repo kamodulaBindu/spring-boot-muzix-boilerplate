@@ -17,8 +17,8 @@ public class CommandLineRunnerSpring implements CommandLineRunner {
     public void run(String... args) throws Exception {
         Logger logger = (Logger) LoggerFactory.getLogger(CommandLineRunnerSpring.class);
         try{
-            Track track = new Track(1,"jdiu","gfudwhf");
-            trackDAO.saveTrack(track);
+            //Track track = new Track();
+            //trackDAO.saveTrack(track);
             for(Track track1:trackDAO.getAllTracks())
             {
                 logger.info(track1.toString());

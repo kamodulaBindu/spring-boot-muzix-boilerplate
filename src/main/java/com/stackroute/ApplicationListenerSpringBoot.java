@@ -16,9 +16,9 @@ public class ApplicationListenerSpringBoot implements ApplicationListener<Contex
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
-        Track track = new Track(2,"hello","hiii");
+        //Track track = new Track();
         try{
-            trackDAO.saveTrack(track);
+           // trackDAO.saveTrack(track);
             for(Track track1 : trackDAO.getAllTracks()){
                 System.out.println(trackDAO.getAllTracks());
             }

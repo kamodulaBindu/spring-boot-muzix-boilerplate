@@ -6,10 +6,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 import java.util.Collection;
 import java.util.List;
 
 //trackrepository interface creation
+@CrossOrigin("*")
 @Repository
 public interface TrackRepository extends MongoRepository<Track, Integer> {
 
